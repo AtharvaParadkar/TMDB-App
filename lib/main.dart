@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:dio/dio.dart';
+import 'package:tmdb_app/utils/text.dart';
 
 void main() => runApp(const MyApp());
 
@@ -58,8 +59,8 @@ class _HomeState extends State<Home> {
       print(trendingResult);
       setState(() {
         trendingMovies = trendingResult['results'];
-        topRatedMovies=topRatedResult['results'];
-        tv=tvResult['results'];
+        topRatedMovies = topRatedResult['results'];
+        tv = tvResult['results'];
       });
       print(trendingMovies);
     } catch (e) {
@@ -71,7 +72,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Movie App'),
+        title: const MovieText(
+          text: 'Flutter Movie App',
+          color: Colors.blue,
+          size: 28,
+        ),
       ),
     );
   }
