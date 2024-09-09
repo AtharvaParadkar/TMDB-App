@@ -1,6 +1,8 @@
 //~ e9a99dba9ecbc9ba67dce9b36b508ab3
 //~ eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlOWE5OWRiYTllY2JjOWJhNjdkY2U5YjM2YjUwOGFiMyIsIm5iZiI6MTcyNTg3MzAwMi43MTU0ODYsInN1YiI6IjY2ZGViYTY3OGZjZWFkYWE4ZTNhZGI1MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PQRFUpo37BSqzK-u0p12dem4TolxzJQQWrMhga941eE
 
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:tmdb_api/tmdb_api.dart';
 import 'package:dio/dio.dart';
@@ -28,7 +30,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  List trendingMovies = [];
+  List trendingMovies = [], topRatedMovies = [], tv = [];
   final String apiKey = 'e9a99dba9ecbc9ba67dce9b36b508ab3';
   final readAccessToken =
       'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlOWE5OWRiYTllY2JjOWJhNjdkY2U5YjM2YjUwOGFiMyIsIm5iZiI6MTcyNTg3MzAwMi43MTU0ODYsInN1YiI6IjY2ZGViYTY3OGZjZWFkYWE4ZTNhZGI1MiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.PQRFUpo37BSqzK-u0p12dem4TolxzJQQWrMhga941eE';
@@ -50,10 +52,14 @@ class _HomeState extends State<Home> {
     );
 
     try {
-      Map trendingResult = await tmdbWithCustomLogs.v3.trending.getTrending();
+      Map trendingResult = await tmdbWithCustomLogs.v3.trending.getTrending(),
+          topRatedResult = await tmdbWithCustomLogs.v3.movies.getTopRated(),
+          tvResult = await tmdbWithCustomLogs.v3.tv.getPopular();
       print(trendingResult);
       setState(() {
-        trendingMovies=trendingResult['results'];
+        trendingMovies = trendingResult['results'];
+        topRatedMovies=topRatedResult['results'];
+        tv=tvResult['results'];
       });
       print(trendingMovies);
     } catch (e) {
