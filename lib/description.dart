@@ -35,9 +35,19 @@ class Discription extends StatelessWidget {
                 Positioned(
                   bottom: 10,
                   child: MovieText(
-                      text: 'Rating - $rating',
+                      text: 'Rating - $rating', color: Colors.white, size: 18),
+                ),
+                Positioned(
+                  top: 10,
+                  left: 10,
+                  child: IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      size: 30,
                       color: Colors.white,
-                      size: 18),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -59,14 +69,20 @@ class Discription extends StatelessWidget {
               size: 14,
             ),
           ),
-          Row(children: [Container(
-            height: 200,
-            width: 100,
-            margin: const EdgeInsets.all(5),
-            child: Image.network(posterurl),
+          Row(
+            children: [
+              Container(
+                height: 200,
+                width: 100,
+                margin: const EdgeInsets.all(5),
+                child: Image.network(posterurl),
+              ),
+              Flexible(
+                child:
+                    MovieText(text: description, color: Colors.white, size: 15),
+              ),
+            ],
           ),
-          Flexible(child: MovieText(text: description, color: Colors.white, size: 15))
-          ],)
         ],
       ),
     );
