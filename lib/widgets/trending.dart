@@ -15,6 +15,7 @@ class TrendingMovies extends StatelessWidget {
         children: [
           const MovieText(
               text: 'Trending Movies', color: Colors.white, size: 20),
+          const SizedBox(height: 15),
           SizedBox(
             height: 270,
             child: ListView.builder(
@@ -32,7 +33,7 @@ class TrendingMovies extends StatelessWidget {
                           image: DecorationImage(
                             image: NetworkImage(
                               'https://image.tmdb.org/t/p/w500${trending[i]['poster_path']}',
-                              ),
+                            ),
                           ),
                         ),
                       ),
