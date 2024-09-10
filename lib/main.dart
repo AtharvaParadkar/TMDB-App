@@ -8,6 +8,7 @@ import 'package:tmdb_api/tmdb_api.dart';
 import 'package:tmdb_app/utils/text.dart';
 import 'package:tmdb_app/widgets/toprated.dart';
 import 'package:tmdb_app/widgets/trending.dart';
+import 'package:tmdb_app/widgets/tv.dart';
 
 void main() => runApp(const MyApp());
 
@@ -63,7 +64,7 @@ class _HomeState extends State<Home> {
         topRatedMovies = topRatedResult['results'];
         tv = tvResult['results'];
       });
-      print(trendingMovies);
+      print(tv);
     } catch (e) {
       print('Error fetching movies: $e');
     }
@@ -84,6 +85,7 @@ class _HomeState extends State<Home> {
         children: [
           TrendingMovies(trending: trendingMovies),
           TopRatedMovies(topRated: topRatedMovies),
+          TV(tv: tv),
         ],
       ),
     );
