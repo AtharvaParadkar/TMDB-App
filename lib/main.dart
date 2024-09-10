@@ -48,6 +48,7 @@ class _HomeState extends State<Home> {
     TMDB tmdbWithCustomLogs = TMDB(
       ApiKeys(apiKey, readAccessToken),
     );
+    // ignore: unused_label
     logConfig:
     const ConfigLogger(
       showLogs: true,
